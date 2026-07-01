@@ -36,11 +36,11 @@
     <nav class="section-nav" aria-label="Main sections">
       <button class="section-tab active" type="button" data-section="learn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-        Learn
+        <span class="tab-label">Learn</span>
       </button>
       <button class="section-tab" type="button" data-section="lab">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        SQL Lab
+        <span class="tab-label">SQL Lab</span>
       </button>
     </nav>
 
@@ -85,12 +85,15 @@
   <!-- ═══ SQL LAB SECTION ═══ -->
   <section id="labSection" class="app-section hidden">
     <div class="lab-topbar">
+      <button class="icon-btn icon-btn-sm lab-left-toggle" id="btnToggleLeft" type="button" aria-label="Toggle database panel" title="Database panel">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      </button>
       <nav class="lab-tabs" aria-label="Lab modes">
         <button class="lab-tab active" type="button" data-lab-tab="practice">Practice</button>
         <button class="lab-tab" type="button" data-lab-tab="playground">Playground</button>
         <button class="lab-tab" type="button" data-lab-tab="free">Free SQL</button>
       </nav>
-      <button class="icon-btn icon-btn-sm lab-right-toggle" id="btnToggleRight" type="button" aria-label="Toggle questions panel" title="Questions panel">
+      <button class="icon-btn icon-btn-sm lab-right-toggle" id="btnToggleRight" type="button" aria-label="Toggle side panel" title="Side panel">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M15 3v18"/></svg>
       </button>
     </div>
@@ -101,7 +104,10 @@
         <aside id="labSidebarLeft" class="slide-sidebar open">
           <div class="sidebar-head">
             <span class="sidebar-title">Database</span>
-            <button class="btn btn-sm btn-ghost" id="btnResetDb" type="button">Reset</button>
+            <div class="sidebar-head-actions">
+              <button class="btn btn-sm btn-ghost" id="btnResetDb" type="button">Reset</button>
+              <button class="icon-btn icon-btn-sm sidebar-close" id="btnCloseLabLeft" type="button" aria-label="Close sidebar">✕</button>
+            </div>
           </div>
           <div class="sidebar-body">
             <ul class="table-list" id="tableList"></ul>
@@ -157,6 +163,7 @@
         <aside id="labSidebarRight" class="slide-sidebar slide-sidebar-right open">
           <div class="sidebar-head">
             <span class="sidebar-title">Questions</span>
+            <button class="icon-btn icon-btn-sm sidebar-close" id="btnCloseLabRight" type="button" aria-label="Close sidebar">✕</button>
           </div>
           <div class="sidebar-body">
             <div class="filter-row" id="categoryFilters"></div>
@@ -182,7 +189,10 @@
         <aside id="pgSidebarLeft" class="slide-sidebar open">
           <div class="sidebar-head">
             <span class="sidebar-title">Your Tables</span>
-            <button class="btn btn-sm btn-primary" id="pgBtnNewTable" type="button">+ New</button>
+            <div class="sidebar-head-actions">
+              <button class="btn btn-sm btn-primary" id="pgBtnNewTable" type="button">+ New</button>
+              <button class="icon-btn icon-btn-sm sidebar-close" id="btnClosePgLeft" type="button" aria-label="Close sidebar">✕</button>
+            </div>
           </div>
           <div class="sidebar-body">
             <ul class="table-list" id="pgTableList"></ul>
@@ -233,7 +243,10 @@
         </main>
 
         <aside id="pgSidebarRight" class="slide-sidebar slide-sidebar-right open">
-          <div class="sidebar-head"><span class="sidebar-title">SQL</span></div>
+          <div class="sidebar-head">
+            <span class="sidebar-title">SQL</span>
+            <button class="icon-btn icon-btn-sm sidebar-close" id="btnClosePgRight" type="button" aria-label="Close sidebar">✕</button>
+          </div>
           <div class="sidebar-body pg-sql-panel">
             <pre class="pg-sql-preview" id="pgSqlPreview">-- Build a table to see SQL</pre>
             <div class="pg-query-section">

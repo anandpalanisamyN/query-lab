@@ -190,7 +190,10 @@ const Tutorial = {
 
     nav.innerHTML = html;
 
-    document.getElementById('tutNavHome')?.addEventListener('click', () => this.showHome());
+    document.getElementById('tutNavHome')?.addEventListener('click', () => {
+      this.showHome();
+      if (typeof AppNav !== 'undefined' && AppNav.isMobile?.()) AppNav.setLearnSidebar(false);
+    });
 
     nav.querySelectorAll('.tut-nav-module-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
@@ -204,6 +207,7 @@ const Tutorial = {
     nav.querySelectorAll('[data-lesson]').forEach((btn) => {
       btn.addEventListener('click', () => {
         this.openLesson(btn.dataset.module, btn.dataset.lesson);
+        if (typeof AppNav !== 'undefined' && AppNav.isMobile?.()) AppNav.setLearnSidebar(false);
       });
     });
   },

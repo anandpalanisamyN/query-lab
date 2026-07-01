@@ -8,6 +8,9 @@ const rootJsFiles = readdirSync('.').filter(
 
 export default defineConfig({
   base: process.env.VITE_BASE || '/',
+  server: {
+    allowedHosts: ['.ngrok-free.app'],
+  },
   plugins: [
     {
       name: 'copy-root-js',
